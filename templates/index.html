@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form action="/" method="POST">
+    <div class="container mb-3">
+        <div class="mb-3">
+            <label for="ToDo" class="form-label">ToDo Title</label>
+            <input type="text" name="title" class="form-control" id="ToDo" required>
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Your Task Here: </label>
+            <input type="text" name="desc" class="form-control" id="desc" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+
+<div class="container my-3">
+    {% if todo|length==0 %}
+    <div class="alert alert-primary" role="alert">
+        No Todo's Found! Add Your First Todo!!
+    </div>
+    {% else %}
+    <h2 class="text-center">Your ToDo's</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Time</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todos in todo %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{todos.title}}</td>
+                <td>{{todos.desc}}</td>
+                <td>{{todos.date}}</td>
+                <td><a href="/delete/{{todos.sno}}" type="button" class="btn btn-primary btn-sm">Delete</a><a
+                        href="/update/{{todos.sno}}" type="button" class="btn btn-primary btn-sm mx-1">Update</a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

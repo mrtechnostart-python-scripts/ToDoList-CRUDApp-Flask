@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form action="/update/{{record.sno}}" method="POST">
+
+    <div class="container mb-3">
+        <div class="mb-3">
+            <label for="ToDo" class="form-label">Update ToDo</label>
+            <input type="text" name="title" class="form-control" value="{{record.title}}" id="ToDo" required>
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Update Task: </label>
+            <input type="text" name="desc" class="form-control" id="desc" value="{{record.desc}}"required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+
+{% endblock body %}
